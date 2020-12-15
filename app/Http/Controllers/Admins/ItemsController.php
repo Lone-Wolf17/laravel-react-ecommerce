@@ -16,7 +16,8 @@ class ItemsController extends Controller
     {
 
         // import from trait(UploadPhoto)
-        $fileName = $this->uploadPhoto($request->get('photo'), 'images/items');
+        $fileName = $this->uploadPhoto($request->file('photo'), 'images/items');
+
         $items = Item::create([
             'name' => $request->get('name'),
             'description' => $request->get('description'),
