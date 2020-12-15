@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import Login from './Admins/Login';
+import Home from "./Admins/Home";
 
 class App extends Component {
     // state = { }
-    render () {
+    render() {
         return (
             <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-md-8">
-                        <div className="card">
-                            <div className="card-header">App Component</div>
-
-                            <div className="card-body">I'm an App component!</div>
-                        </div>
-                    </div>
-                </div>
+                <Router>
+                    <Route exact path={'/adminsLogin'} component={Login}/>
+                    <Route exact path={'/home'} component={Home}/>
+                </Router>
             </div>
         );
     }
