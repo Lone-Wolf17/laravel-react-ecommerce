@@ -4,17 +4,19 @@ namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
 use App\Models\Item;
+use App\Traits\UploadPhoto;
 use Illuminate\Http\Request;
 
 class ItemsController extends Controller
 {
+
+    use UploadPhoto;
+
     public function addItem(Request $request, $id)
     {
-        $file = $request->file('photo');
-        $fileName = time() . '_' . $file->getClientOriginalName();
-        $filePath = 'images/items';
-        $file->move($filePath, $fileName);
 
+        // import from trait(UploadPhoto)
+        $fileName = $this->uploadPhoto($request->get('photo'), 'images/items');
         $items = Item::create([
             'name' => $request->get('name'),
             'description' => $request->get('description'),
