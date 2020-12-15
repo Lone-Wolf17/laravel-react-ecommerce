@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admins\AdminsController;
+use App\Http\Controllers\Admins\ItemsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,13 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
+// login and getAuthAdmin
 Route::group(['prefix' => 'admins', 'namespace' => 'Admins'], function () {
     Route::post('login', [AdminsController::class, 'adminsLogin']);
     Route::get('authAdmin', [AdminsController::class, 'getAuthenticatedAdmin']);
+});
+
+//items
+Route::group(['prefix' => 'admins', 'namespace' => 'Admins'], function () {
+    Route::post('add/items/{id}', [ItemsController::class, 'addItem']);
 });

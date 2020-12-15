@@ -19,7 +19,6 @@ class CreateItemsTable extends Migration
             $table->string('description');
             $table->string('status');
             $table->string('price');
-            $table->string('photo');
             $table->string('photoUrl');
             $table->integer('approve');
             $table->integer('admin_id');
