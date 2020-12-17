@@ -19,13 +19,18 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-// login and getAuthAdmin
+
+################### Login ##############
 Route::group(['prefix' => 'admins', 'namespace' => 'Admins'], function () {
     Route::post('login', [AdminsController::class, 'adminsLogin']);
+});
+
+################## getAuthAdmin ###################
+Route::group(['prefix' => 'admins', 'namespace' => 'Admins', 'middleware' => ['adminsRoutes', 'jwt.auth']], function () {
     Route::get('authAdmin', [AdminsController::class, 'getAuthenticatedAdmin']);
 });
 
-//items
+################## items #############################
 Route::group(['prefix' => 'admins', 'namespace' => 'Admins', 'middleware' => ['adminsRoutes', 'jwt.auth']], function () {
     Route::post('add/items/{id}', [ItemsController::class, 'addItem']);
 });

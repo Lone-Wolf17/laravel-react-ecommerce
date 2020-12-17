@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Login from './Admins/Login';
 import Home from "./Admins/Home";
 import Navbar from "./Admins/Navbar";
+import AddItems from "./items/AddItems";
 
 class App extends Component {
     // state = { }
@@ -14,6 +15,7 @@ class App extends Component {
                     <Navbar/>
                     <div className="container">
 
+                        <Route exact path={'/addItems'} component={AddItems}/>
                         <Route exact path={'/adminsLogin'} component={Login}/>
                         <Route exact path={'/home'} component={Home}/>
 

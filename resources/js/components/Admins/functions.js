@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const url = 'http://localhost:8000/api/admins/';
 
+
 export const login = async (adminsData) => {
 
     return await axios.post(
@@ -18,6 +19,22 @@ export const login = async (adminsData) => {
     ).then(res => {
         localStorage.setItem('adminsToken', res.data.token);
         return res.data.token
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
+export const getAuthAdmin = async (adminsData) => {
+
+    return await axios.get(
+        url + "authAdmin",
+        {
+            headers: {
+                Authorization: `bearer ${localStorage.adminsToken}`
+            }
+        }
+    ).then(res => {
+        return res
     }).catch(err => {
         console.log(err);
     });
