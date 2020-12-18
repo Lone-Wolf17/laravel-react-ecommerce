@@ -31,3 +31,17 @@ export const getItems = async () => {
         console.log(err);
     });
 }
+
+export const editItem = async (id) => {
+
+    return await axios.get(
+        url + "edit/item/" + id,
+        {
+            headers: token
+        }
+    ).then(res => {
+        return res
+    }).catch(err => {
+        console.log(err);
+    });
+}

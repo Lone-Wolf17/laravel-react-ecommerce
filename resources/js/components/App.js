@@ -4,8 +4,9 @@ import {HashRouter as Router, Route} from 'react-router-dom';
 import Login from './Admins/Login';
 import Home from "./Admins/Home";
 import Navbar from "./Admins/Navbar";
-import AddItem from "./items/AddItem";
-import GetItems from "./items/GetItems"
+import AddItem from "./Admins/items/AddItem";
+import GetItems from "./Admins/items/GetItems"
+import EditItem from "./Admins/items/EditItem";
 
 class App extends Component {
     // state = { }
@@ -19,6 +20,7 @@ class App extends Component {
                         <Route exact path={'/addItem'} component={AddItem}/>
                         <Route exact path={'/adminsLogin'} component={Login}/>
                         <Route exact path={'/home'} component={Home}/>
+                        <Route exact path={'/edit/item/:id'} component={EditItem}/>
 
                     </div>
                 </Router>

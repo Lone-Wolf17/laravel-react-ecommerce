@@ -18,7 +18,7 @@ class GetItems extends Component {
     render() {
         return (
             <div>
-                <Link className='btn btn-info' to={'/addItem'}>Add Item</Link>
+                <Link className='btn btn-info mt-3 mb-3' to={'/addItem'}>Add Item</Link>
                 <table className='table table-striped'>
                     <thead>
                     <tr>
@@ -44,6 +44,14 @@ class GetItems extends Component {
                                     {item.status === '2' ? (
                                         <span>used</span>
                                     ) : null}
+                                </td>
+                                <td>
+                                    <Link
+                                        className='btn btn-info'
+                                        to={'/edit/item/' + item.id}
+                                    >
+                                        Edit
+                                    </Link>
                                 </td>
 
                             </tr>

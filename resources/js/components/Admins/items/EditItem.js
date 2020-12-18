@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {getAuthAdmin} from "../Admins/functions";
-import {addItem} from "./functions";
+import {getAuthAdmin} from "../functions";
+import {addItem, editItem} from "./functions";
 
-
-class AddItem extends Component {
+class EditItem extends Component {
     state = {
         // inputs
         name: '',
@@ -26,6 +25,20 @@ class AddItem extends Component {
     inputRef = React.createRef();
 
     componentDidMount() {
+
+        const id = this.props.match.params.id;
+
+        editItem(id).then(res => {
+            console.log(res.data.item.status)
+            this.setState({
+                name: res.data.item.name,
+                description: res.data.item.description,
+                status: res.data.item.status,
+                price: res.data.item.price
+            })
+
+        })
+
         getAuthAdmin().then(res => {
             this.setState({
                 admins_id: res.data.admin.id
@@ -253,7 +266,7 @@ class AddItem extends Component {
                                 <select
                                     type='text'
                                     className='form-control'
-                                    id="exampleInputDescription1"
+                                    id="exampleInputStatus1"
                                     name='status'
                                     value={this.state.status}
                                     onChange={this.changeState}
@@ -315,4 +328,4 @@ class AddItem extends Component {
     }
 }
 
-export default AddItem;
+export default EditItem;
