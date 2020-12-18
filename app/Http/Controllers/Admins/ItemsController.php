@@ -46,4 +46,11 @@ class ItemsController extends Controller
 
         return response()->json(compact('items'));
     }
+
+    public function getItems()
+    {
+        $items = Item::all();
+
+        return response()->json(compact('items'));
+    }
 }

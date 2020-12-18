@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {getAuthAdmin} from "../Admins/functions";
-import {addItems} from "./functions";
+import {addItem} from "./functions";
 
 
-class AddItems extends Component {
+class AddItem extends Component {
     state = {
         // inputs
         name: '',
@@ -184,7 +184,7 @@ class AddItems extends Component {
 
         const admin_id = this.state.admins_id
 
-        addItems(admin_id, formData).then(res => {
+        addItem(admin_id, formData).then(res => {
             console.log("Here!!")
             if (res) {
                 console.log("Successful!!")
@@ -315,4 +315,4 @@ class AddItems extends Component {
     }
 }
 
-export default AddItems;
+export default AddItem;
