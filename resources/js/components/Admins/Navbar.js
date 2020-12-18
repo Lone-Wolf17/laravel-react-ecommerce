@@ -12,7 +12,7 @@ class Navbar extends Component {
     render() {
 
         const Navbar = <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-            
+
             <button
                 className='navbar-toggler'
                 type='button'
@@ -29,6 +29,11 @@ class Navbar extends Component {
                     <li className='nav-item active'>
                         <Link className='nav-link' to={'/home'}>
                             Home <span className="sr-only">(current)</span>
+                        </Link>
+                    </li>
+                    <li className='nav-item active'>
+                        <Link className='nav-link' to={'/getItems'}>
+                            Items
                         </Link>
                     </li>
                     <li className='nav-item'>

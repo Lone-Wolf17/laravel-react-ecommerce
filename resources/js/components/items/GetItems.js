@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {getItems} from "./functions";
+import {Link} from "react-router-dom";
 
 class GetItems extends Component {
     state = {
@@ -16,38 +17,41 @@ class GetItems extends Component {
 
     render() {
         return (
-            <table className='table table-striped'>
-                <thead>
-                <tr>
-                    <th scope='col'>Item Number</th>
-                    <th scope='col'>Name</th>
-                    <th scope='col'>Description</th>
-                    <th scope='col'>Status</th>
-                    <th scope='col'>Control</th>
-                </tr>
-                </thead>
+            <div>
+                <Link className='btn btn-info' to={'/addItem'}>Add Item</Link>
+                <table className='table table-striped'>
+                    <thead>
+                    <tr>
+                        <th scope='col'>Item Number</th>
+                        <th scope='col'>Name</th>
+                        <th scope='col'>Description</th>
+                        <th scope='col'>Status</th>
+                        <th scope='col'>Control</th>
+                    </tr>
+                    </thead>
 
-                <tbody>
-                {this.state.items.map(item => {
-                    return (
-                        <tr key={item.id}>
-                            <th scope='row'>{item.id}</th>
-                            <td>{item.name}</td>
-                            <td>{item.description}</td>
-                            <td>
-                                {item.status === 1 ? (
-                                    <span>new</span>
-                                ) : null}
-                                {item.status === 2 ? (
-                                    <span>used</span>
-                                ) : null}
-                            </td>
+                    <tbody>
+                    {this.state.items.map(item => {
+                        return (
+                            <tr key={item.id}>
+                                <th scope='row'>{item.id}</th>
+                                <td>{item.name}</td>
+                                <td>{item.description}</td>
+                                <td>
+                                    {item.status === '1' ? (
+                                        <span>new</span>
+                                    ) : null}
+                                    {item.status === '2' ? (
+                                        <span>used</span>
+                                    ) : null}
+                                </td>
 
-                        </tr>
-                    )
-                })}
-                </tbody>
-            </table>
+                            </tr>
+                        )
+                    })}
+                    </tbody>
+                </table>
+            </div>
         )
     }
 }
