@@ -12,7 +12,7 @@ trait ItemRules
             'description' => 'required|string|min:4|max:100',
             'status' => 'required|numeric',
             'price' => 'required|string',
-            'photo' => 'required|image|mimes:jpg,jpeg,gif,png|max:14048000'
+            'photo' => 'required|image|mimes:jpg,jpeg,gif,png|max:14000048'
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admins\AdminsController;
 use App\Http\Controllers\Admins\ItemsController;
+use App\Http\Controllers\Admins\MembersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,4 +38,9 @@ Route::group(['prefix' => 'admins', 'namespace' => 'Admins', 'middleware' => ['a
     Route::get('edit/item/{id}', [ItemsController::class, 'editItem']);
     Route::post('update/item/{id}', [ItemsController::class, 'updateItem']);
     Route::delete('delete/item/{id}', [ItemsController::class, 'deleteItem']);
+});
+
+################################## users ###################################
+Route::group(['prefix' => 'admins', 'namespace' => 'Admins', 'middleware' => ['adminsRoutes', 'jwt.auth']], function () {
+    Route::post('add/user', [MembersController::class, 'addUser']);
 });
