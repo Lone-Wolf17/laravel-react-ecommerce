@@ -59,3 +59,17 @@ export const updateItem = async (id, formData) => {
         console.log(err);
     });
 }
+
+export const deleteItem = async (id) => {
+
+    return await axios.delete(
+        url + "delete/item/" + id,
+        {
+            headers: token
+        }
+    ).then(res => {
+        return res
+    }).catch(err => {
+        console.log(err);
+    });
+}

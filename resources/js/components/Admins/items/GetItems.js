@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {getItems} from "./functions";
+import {deleteItem, getItems} from "./functions";
 import {Link} from "react-router-dom";
 
 class GetItems extends Component {
@@ -12,6 +12,20 @@ class GetItems extends Component {
             this.setState({
                 items: res.data.items
             })
+        })
+    }
+
+    delete = (id) => {
+        deleteItem(id).then(res => {
+            let items = this.state.items;
+            for (let index = 0; index < items.length; index++) {
+                if (items[index].id === id) {
+                    items.splice(index, 1)
+                    this.setState({
+                        items
+                    })
+                }
+            }
         })
     }
 
@@ -52,6 +66,9 @@ class GetItems extends Component {
                                     >
                                         Edit
                                     </Link>
+                                    <button className='btn btn-danger ml-1'
+                                            onClick={() => this.delete(item.id)}>Delete
+                                    </button>
                                 </td>
 
                             </tr>

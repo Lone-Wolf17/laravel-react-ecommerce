@@ -81,4 +81,22 @@ class ItemsController extends Controller
 
         return response()->json(compact('item'));
     }
+
+    public function deleteItem($id)
+    {
+        $item = Item::find($id);
+
+        if ($item) {
+            $item->delete();
+            return response()->json([
+                'msg' => 'successful'
+            ]);
+        } else {
+            return response()->json([
+                'msg' => 'No Item Exists with that ID'
+            ]);
+        }
+
+
+    }
 }
