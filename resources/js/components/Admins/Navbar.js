@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Link, Redirect, withRouter} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import '../../../css/admins/navbar.css';
 
 class Navbar extends Component {
 
@@ -26,13 +28,15 @@ class Navbar extends Component {
 
             <div className='collapse navbar-collapse' id={'navbarNav'}>
                 <ul className='navbar-nav'>
-                    <li className='nav-item active'>
+                    <li className='nav-item position-absolute mr-2 active'>
                         <Link className='nav-link' to={'/home'}>
+                            <FontAwesomeIcon icon='home' className={'icon'}/>
                             Home <span className="sr-only">(current)</span>
                         </Link>
                     </li>
                     <li className='nav-item active'>
                         <Link className='nav-link' to={'/getItems'}>
+                            <FontAwesomeIcon icon='briefcase' className={'icon'}/>
                             Items
                         </Link>
                     </li>
@@ -40,6 +44,7 @@ class Navbar extends Component {
                         <a
                             className='nav-link' href={'/adminsLogin'}
                             onClick={this.logout.bind(this)}>
+                            <FontAwesomeIcon icon='angle-double-left' className={'icon'}/>
                             logout
                         </a>
                     </li>
