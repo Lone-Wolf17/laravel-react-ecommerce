@@ -45,7 +45,7 @@ class ItemsController extends Controller
 
     public function getItems()
     {
-        $items = Item::all();
+        $items = Item::orderBy('id', 'desc')->paginate(5);
 
         return response()->json(compact('items'));
     }

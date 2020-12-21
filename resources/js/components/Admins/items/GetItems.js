@@ -1,18 +1,40 @@
 import React, {Component} from 'react';
-import {deleteItem, getItems} from "./functions";
+import {deleteItem, getItems, handlePage} from "./functions";
 import {Link} from "react-router-dom";
+import Pagination from "react-js-pagination";
 
 class GetItems extends Component {
     state = {
-        items: []
+        items: [],
+        activePage: 1,
+        itemsCountPerPage: 1,
+        totalItemsCount: 1,
+        pageRangeDisplayed: 3
     }
 
     componentDidMount() {
         getItems().then(res => {
             this.setState({
-                items: res.data.items
+                items: res.data.items.data,
+                activePage: res.data.items.current_page,
+                itemsCountPerPage: res.data.items.per_page,
+                totalItemsCount: res.data.items.total,
+
             })
         })
+    }
+
+    handlePageChange(pageNumber) {
+        console.log(`active page is ${pageNumber}`);
+        handlePage(pageNumber).then(res => {
+            this.setState({
+                items: res.data.items.data,
+                activePage: res.data.items.current_page,
+                itemsCountPerPage: res.data.items.per_page,
+                totalItemsCount: res.data.items.total,
+            })
+        })
+
     }
 
     delete = (id) => {
@@ -66,7 +88,7 @@ class GetItems extends Component {
                                     >
                                         Edit
                                     </Link>
-                                    <button className='btn btn-danger ml-1'
+                                    <button className='btn btn-danger ml-2'
                                             onClick={() => this.delete(item.id)}>Delete
                                     </button>
                                 </td>
@@ -76,6 +98,15 @@ class GetItems extends Component {
                     })}
                     </tbody>
                 </table>
+                <Pagination
+                    activePage={this.state.activePage}
+                    itemsCountPerPage={this.state.itemsCountPerPage}
+                    totalItemsCount={this.state.totalItemsCount}
+                    pageRangeDisplayed={3}
+                    onChange={this.handlePageChange.bind(this)}
+                    itemClass='page-item'
+                    linkClass='page-link'
+                />
             </div>
         )
     }

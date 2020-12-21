@@ -32,6 +32,20 @@ export const getItems = async () => {
     });
 }
 
+export const handlePage = async (pageNumber) => {
+
+    return await axios.get(
+        url + "get/items?page=" + pageNumber,
+        {
+            headers: token
+        }
+    ).then(res => {
+        return res
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
 export const editItem = async (id) => {
 
     return await axios.get(
