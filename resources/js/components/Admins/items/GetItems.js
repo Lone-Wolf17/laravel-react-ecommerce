@@ -20,7 +20,7 @@ class GetItems extends Component {
             <div>
                 <Link className='btn btn-info mt-3 mb-3' to={'/addItem'}>Add Item</Link>
                 <table className='table table-striped'>
-                    <thead>
+                    <thead className='bg-info'>
                     <tr>
                         <th scope='col'>Item Number</th>
                         <th scope='col'>Name</th>

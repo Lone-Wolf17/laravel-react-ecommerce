@@ -45,3 +45,17 @@ export const editItem = async (id) => {
         console.log(err);
     });
 }
+
+export const updateItem = async (id, formData) => {
+
+    return await axios.post(
+        url + "update/item/" + id, formData,
+        {
+            headers: token
+        }
+    ).then(res => {
+        return res
+    }).catch(err => {
+        console.log(err);
+    });
+}

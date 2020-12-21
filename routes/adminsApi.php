@@ -35,4 +35,6 @@ Route::group(['prefix' => 'admins', 'namespace' => 'Admins', 'middleware' => ['a
     Route::post('add/item/{id}', [ItemsController::class, 'addItem']);
     Route::get('get/items', [ItemsController::class, 'getItems']);
     Route::get('edit/item/{id}', [ItemsController::class, 'editItem']);
+
+    Route::post('update/item/{id}', [ItemsController::class, 'updateItem']);
 });

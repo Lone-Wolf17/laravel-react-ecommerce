@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {getAuthAdmin} from "../functions";
-import {addItem, editItem} from "./functions";
+import {editItem, updateItem} from "./functions";
 
 class EditItem extends Component {
     state = {
@@ -195,12 +195,12 @@ class EditItem extends Component {
         formData.append('price', this.state.price)
         formData.append('photo', this.state.photo)
 
-        const admin_id = this.state.admins_id
+        const id = this.props.match.params.id;
 
-        addItem(admin_id, formData).then(res => {
-            console.log("Here!!")
+        updateItem(id, formData).then(res => {
+
             if (res) {
-                console.log("Successful!!")
+
                 this.inputRef.current.value = '';
                 this.setState({
                     success: 'You created an Item successfully',
